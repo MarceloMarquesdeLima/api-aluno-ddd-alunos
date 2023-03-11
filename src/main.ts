@@ -1,4 +1,4 @@
-import OrderItem from './Domain/aggregate/order_item';
+import OrderItem from './Domain/entity/orderItem';
 import Customer from './Domain/entity/customer';
 import Order from './Domain/entity/order';
 import Address from './Domain/valueObjects/address';
@@ -8,7 +8,7 @@ const address = new Address("Rua Chile", 59, "86181-190", "Cambé", "Paraná");
 customer.Address = address;
 customer.activate();
 
-const item1 = new OrderItem("1", "Item 1", 10);
-const item2 = new OrderItem("2", "Item 2", 20);
+const item1 = new OrderItem("i1", "Item 1", 20, 2, "p1");
+const item2 = new OrderItem("i2", "Item 2", 30, 1, "p2");
 
 const order = new Order("1", "123", [item1, item2]);

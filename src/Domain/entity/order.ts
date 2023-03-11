@@ -1,4 +1,4 @@
-import OrderItem from "../aggregate/order_item";
+import OrderItem from "./orderItem";
 
 export default class Order {
 
@@ -26,10 +26,13 @@ export default class Order {
         if(this._items.length === 0){
             throw new Error("Item qtde must be than 0");
         }
+        if(this._items.some(item => item.quantity <= 0)){
+            throw new Error("Quantity must be greater than 0");
+        }
         return true;
     }
 
     total(): number {
-        return this._items.reduce((acc, item) => acc + item.price, 0);
+        return this._items.reduce((acc, item) => acc + item.orderItemTotal(), 0);
     }
 }
